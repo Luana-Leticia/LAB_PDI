@@ -28,17 +28,22 @@ import metrics.RMSE_SSIM_SNR_CorrelationCoefficient_calculator;
 public class Filters_Performance {	
 	
 	// Directories paths
-	private String filteredsPath = "C:/Users/luana/Downloads/LAB03/imagens-filtradas/"; // filtered images folder directory
-	private String targetImagePath = "C:/Users/luana/Downloads/LAB03/lab03_imagens/Ref.tif"; // reference image directory
-	private String noisyImagesPath = "C:/Users/luana/Downloads/LAB03/lab03_imagens/Noise_"; // noisy images directory
-	private String tabsPath = "C:/Users/luana/Downloads/LAB03/tabelas/"; // tables folder directory
+	private String targetImagePath; // reference image directory
+	private String noisyImagesPath; // noisy images directory
+	private String filteredsPath; // filtered images folder directory
+	private String tabsPath; // tables folder directory
 	
 	// Filter 
 	private String filterName = " ";
 
 	
-	public Filters_Performance() {
+	public Filters_Performance(String[] paths) {
 		// TODO Auto-generated constructor stub
+		this.targetImagePath = paths[0] + "/Ref.tif";
+		this.noisyImagesPath = paths[0] + "/Noise_";
+		this.filteredsPath = paths[1] + "/";
+		this.tabsPath = paths[2] + "/";
+		
 	}
 	
 	// Method analyze some filter with MxN window

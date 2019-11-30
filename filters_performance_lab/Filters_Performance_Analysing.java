@@ -25,22 +25,34 @@ public class Filters_Performance_Analysing implements PlugIn {
 	public void run(String arg) {
 		// TODO Auto-generated method stub
 		
+		// Get paths of files and folder where new files will be saved
+		GenericDialog gdPaths = createDirectoriesDialog();
+		
+		// Create a vector for storing the strings of dialog
+		String[] paths = new String[3];
+		
+		// Iterate to get string of paths and store in the vector
+		int strings = 3;
+		for (int i = 0; i < strings; i++) {
+			paths[i] = gdPaths.getNextString();
+		}
+		
 		// Get windows dimensions of each filter
-		GenericDialog gd = createParametersDialog();
+		GenericDialog gdParams = createParametersDialog();
 		
 		// Create a vector for storing the values of dialog
 		int[] params = new int[10];
-
-		int values = 10;
 		
+		// Iterate to get values of parameters and store in the vector
+		int values = 10;		
 		for (int i = 0; i < values; i++) {
-			params[i] = (int) gd.getNextNumber();
+			params[i] = (int) gdParams.getNextNumber();
 		}
 		
-		// Initialize the performance class
-		Filters_Performance fp = new Filters_Performance();
+		// Initialize the performance class with the paths
+		Filters_Performance fp = new Filters_Performance(paths);
 		
-		// Iterate for performing each filter with the respective windows
+		// Iterate for performing each filter with the respective windows parameters
 		int filter = 5;
 		
 		for (int j = 0; j < filter; j++) {
@@ -73,5 +85,22 @@ public class Filters_Performance_Analysing implements PlugIn {
 		gd.showDialog();
 		return gd;
 	}
+	
+	// Method create a dialog window to get directories of folder files
+	private GenericDialog createDirectoriesDialog() {
+			
+			GenericDialog gd = new GenericDialog("Directories folder paths");
+			gd.addMessage("Tell the paths folder used to\n\n");
+			gd.addMessage("Get reference and noisy images:");
+			gd.addStringField("Path:", "C:/Users/luana/Downloads/LAB03/lab03_imagens", 50);
+			gd.addMessage("Save filtered images:");
+			gd.addStringField("Path:", "C:/Users/luana/Downloads/LAB03/imagens-filtradas", 50);
+			gd.addMessage("Save tables of metrics:");
+			gd.addStringField("Path:", "C:/Users/luana/Downloads/LAB03/tabelas", 50);
+			gd.addMessage("\n(please check if bars orientation is as default: '/') \n\n");
+			gd.pack();	
+			gd.showDialog();
+			return gd;
+		}
 
 }
