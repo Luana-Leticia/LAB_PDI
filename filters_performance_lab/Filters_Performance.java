@@ -39,10 +39,10 @@ public class Filters_Performance {
 	
 	public Filters_Performance(String[] paths) {
 		// TODO Auto-generated constructor stub
-		this.targetImagePath = paths[0] + "/Ref.tif";
-		this.noisyImagesPath = paths[0] + "/Noise_";
-		this.filteredsPath = paths[1] + "/";
-		this.tabsPath = paths[2] + "/";
+		this.targetImagePath = paths[0] + "Ref.tif";
+		this.noisyImagesPath = paths[0] + "Noise_";
+		this.filteredsPath = paths[1];
+		this.tabsPath = paths[2];
 		
 	}
 	
